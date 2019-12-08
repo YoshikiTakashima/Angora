@@ -25,4 +25,5 @@ RUN ./build/install_pin_mode.sh
 
 VOLUME ["/data"]
 WORKDIR /data
-ENTRYPOINT [ "/opt/env.init" ]
+#ENTRYPOINT [ "/opt/env.init" ]
+CMD [ "bash" ]
