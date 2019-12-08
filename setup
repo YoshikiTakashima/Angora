@@ -1,13 +1,18 @@
-#Update
+#Install Deps
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install -y \
           build-essential \
           clang 
 
+echo -e "export PATH=/usr/local/bin:$PATH\nexport LD_LIBRARY_PATH=/lib:$LD_LIBRARY_PATH\nsudo sysctl kernel.core_pattern=core" \
+          >>~/.bashrc
+source ~/.bashrc
+
+#Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-PREFIX=/usr/local/bin ./build/install_llvm.sh
+#Install LLVM
+PREFIX=/usr/local/bin sudo ./build/install_llvm.sh
 
-echo -e "export PATH=/path-to-clang/bin:$PATH\nexport LD_LIBRARY_PATH=/path-to-clang/lib:$LD_LIBRARY_PATH" \
-          >>~/.bashrc
+
